@@ -1,0 +1,35 @@
+
+
+
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Class (कक्षा)</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list >
+    <ion-item class="centertext"  (click)="selectClass(item)"  *ngFor="let item of classList ; let i=index" [ngStyle]="{'color':  i % 2 == 0 ? '#c144a8' : '#FF8A33' }" >
+      <ion-label  >
+        {{item?.className}}
+      </ion-label>
+      
+    </ion-item>
+   
+  </ion-list>
+  <!-- <app-menu></app-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="titlecenter">Class (कक्षा)</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </div> -->
+  
+</ion-content>

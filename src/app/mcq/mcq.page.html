@@ -1,0 +1,35 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar color="primary">
+      <ion-title>Question (सवाल) 
+        <!-- <ion-button size="small" class="ion-float-right" style="height: 41px;" shape="round"><ion-icon name="caret-forward-outline"></ion-icon></ion-button> -->
+        <span class="ion-float-right">{{currentQuestion+1}}/{{questionList.length}}</span>
+      </ion-title>
+      <!-- <button class = "button button-icon">
+        <i class="icon ion-compose"></i>
+    </button> -->
+    
+    </ion-toolbar>
+  </ion-header>,
+  <ion-content fullscreen>
+    <ion-card  *ngFor="let item of questionList; let i=index" [style.display]="i==currentQuestion ? 'block' : 'none'">
+      
+        <img *ngIf="item.questionDeatils.questionImageURL" src='{{"http://skg1989-001-site1.itempurl.com/Questionimage/"+item.questionDeatils.questionImageURL}}' />
+      <ion-card-content>
+        {{item.questionDeatils?.question}}
+      </ion-card-content>
+      <ion-list > 
+        <ion-radio-group>
+          <ion-item *ngFor="let option of item.questionDeatils.questionOption" color="{{option.color}}" >
+            <ion-label (click)="answer(option.questionOptionId,option.questionOption,option.questionId)">{{option?.questionOption}}</ion-label> 
+           
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-button *ngIf="currentQuestion >0" (click)="prevQuestion()" size="small" class="ion-float-left" style="height: 41px;" shape="round"><ion-icon name="caret-back-outline"></ion-icon></ion-button>
+      <ion-button size="small" class="ion-float-left" style="height: 41px;" >Quit</ion-button>
+      <ion-button *ngIf="questionList.length != currentQuestion+1" (click)="nextQuestion()" size="small" class="ion-float-right" style="height: 41px;" shape="round"><ion-icon name="caret-forward-outline"></ion-icon></ion-button>
+      <ion-button  (click)="resetQuiz()" size="small" class="ion-float-right" style="height: 41px;" >Finish</ion-button> 
+    </ion-card>
+  </ion-content>
+</ion-app>
